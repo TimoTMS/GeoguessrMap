@@ -1,0 +1,4 @@
+/data/*
+  Cache-Control: public, max-age=604800
+/lib/*
+  Cache-Control: public, max-age=2592000, immutable

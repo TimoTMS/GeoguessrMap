@@ -1,0 +1,18 @@
+{
+  "name": "geoguessr-karte",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Interaktive Weltkarte mit GeoGuessr-Erkennungshilfen (statisch, für Cloudflare Pages)",
+  "scripts": {
+    "dev": "npx --yes serve public -l 8000",
+    "build:map": "node scripts/build-world.mjs",
+    "update:libs": "node scripts/update-libs.mjs",
+    "deploy": "npx --yes wrangler pages deploy public --project-name geoguessr-karte"
+  },
+  "devDependencies": {
+    "d3": "7.9.0",
+    "i18n-iso-countries": "7.14.0",
+    "topojson-client": "3.1.0",
+    "world-atlas": "2.0.2"
+  }
+}

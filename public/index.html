@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GeoGuessr-Erkennungshilfen – interaktive Weltkarte</title>
+  <meta name="description" content="Interaktive Weltkarte mit GeoGuessr-Hinweisen: Fahrtrichtung, Schrift, Straßenlinien, Kennzeichen, Leitpfosten, Strommasten und mehr.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌍</text></svg>">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>GeoGuessr-Erkennungshilfen</h1>
+    <p class="sub">Merkmal wählen · Land anklicken für alle Infos · Mausrad/Pinch zum Zoomen · Katalog für Bildbeispiele · Filter zum Eingrenzen</p>
+    <div class="toolbar">
+      <div id="chips" class="chips"></div>
+      <div class="search">
+        <input id="search" list="countrylist" placeholder="Land suchen …" autocomplete="off">
+        <datalist id="countrylist"></datalist>
+      </div>
+    </div>
+    <div class="legend-row">
+      <div id="legend" class="legend"></div>
+      <label class="toggle"><input type="checkbox" id="onlyCovered"> nur Street-View-Länder</label>
+    </div>
+  </header>
+
+  <main>
+    <section class="mapwrap">
+      <svg id="map" role="img" aria-label="Weltkarte"></svg>
+      <div id="tooltip" class="tooltip" hidden></div>
+      <div class="mapbtns">
+        <button id="zoomIn" title="Hineinzoomen">+</button>
+        <button id="zoomOut" title="Herauszoomen">−</button>
+        <button id="zoomReset" title="Zurücksetzen">⟲</button>
+      </div>
+      <div id="highlightBar" class="highlightbar" hidden></div>
+    </section>
+
+    <aside class="side">
+      <nav class="tabs">
+        <button data-tab="info" class="active">Land</button>
+        <button data-tab="catalog">Bildkatalog</button>
+        <button data-tab="filter">Filter</button>
+      </nav>
+      <div id="tab-info" class="tab active"><div id="info" class="info"><p class="muted">Land anklicken …</p></div></div>
+      <div id="tab-catalog" class="tab">
+        <div id="catTabs" class="subtabs"></div>
+        <div id="catalog" class="catalog"></div>
+      </div>
+      <div id="tab-filter" class="tab">
+        <p class="muted small">Was siehst du im Spiel? Wähle die Merkmale – übrig bleiben die passenden Länder. Nicht erfasste Werte zählen als „passt nicht“.</p>
+        <div id="filters" class="filters"></div>
+        <button id="filterReset" class="btn">Filter zurücksetzen</button>
+        <div id="filterResult" class="filterresult"></div>
+      </div>
+    </aside>
+  </main>
+
+  <footer>
+    Vereinfachte Faustregeln – Ausnahmen gibt es in jedem Land. Zeichnungen sind schematisch. Abdeckung: Stand Okt. 2026, ohne Gewähr.
+    Kartendaten: Natural Earth (gemeinfrei) via world-atlas.
+  </footer>
+
+  <script src="lib/d3.min.js"></script>
+  <script src="lib/topojson-client.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/features.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
